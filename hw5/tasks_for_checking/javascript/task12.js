@@ -13,17 +13,17 @@ if (confirm('Почати тестування?')) {
     let srcImage = '';
     const n = 1 + Math.floor(Math.random()*IMAGE_VARIANTS)
     switch (n) {
-      case 1: srcImage = "hw5/assets/cherry.png"
+      case 1: srcImage = "../assets/cherry.png"
         break;
-      case 2: srcImage = "hw5/assets/lemon.png"
+      case 2: srcImage = "../assets//lemon.png"
         break;
-      case 3: srcImage = "hw5/assets/watermelon.png"
+      case 3: srcImage ="../assets/watermelon.png"
         break;
-      case 4: srcImage = "hw5/assets/orange.png"
+      case 4: srcImage = "../assets/orange.png"
         break;
     }
     resultHTML += `<div style="padding:10px;border-style: ridge; border-color: black;">
-          <img src=${srcImage} width="80" />
+          <img src="${srcImage}" width="80" />
         </div>`
     comboCode += n
   }
