@@ -15,7 +15,7 @@ if (confirm('Почати тестування?')) {
     switch (n) {
       case 1: srcImage = "../assets/cherry.png"
         break;
-      case 2: srcImage = "../assets//lemon.png"
+      case 2: srcImage = "../assets/lemon.png"
         break;
       case 3: srcImage ="../assets/watermelon.png"
         break;

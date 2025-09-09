@@ -13,7 +13,7 @@ if (confirm('Почати тестування?')) {
     let srcImage = '';
     const n = 1 + Math.floor(Math.random()*IMAGE_VARIANTS)
     switch (n) {
-      case 1: srcImage = "../assets//cherry.png"
+      case 1: srcImage = "../assets/cherry.png"
         break;
       case 2: srcImage = "../assets/lemon.png"
         break;
