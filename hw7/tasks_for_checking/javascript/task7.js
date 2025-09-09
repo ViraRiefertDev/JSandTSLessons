@@ -4,21 +4,22 @@
 if (confirm('Почати тестування?')) {
   function randomPicture(src1, src2, src3, src4){
     const n = 1 + Math.floor(Math.random()*4)
-    let randomImg
+    let randomImgSrc
     switch (n) {
-      case 1: randomImg = src1
+      case 1: randomImgSrc = src1
         break;
-      case 2: randomImg = src2
+      case 2: randomImgSrc = src2
         break;
-      case 3: randomImg = src3
+      case 3: randomImgSrc = src3
         break;
-      case 4: randomImg = src4
+      case 4: randomImgSrc = src4
         break;
       }
-      document.write(`
-        <div style="padding:10px;text-align:center;">
-          <img src="${randomImg}" width="400" />
-        </div>`)
+      return randomImgSrc
   }
-  randomPicture('./assets/img1.webp', './assets/img2.webp', './assets/img3.webp', './assets/img4.webp')
+  const randomImgSrc = randomPicture('./assets/img1.webp', './assets/img2.webp', './assets/img3.webp', './assets/img4.webp')
+  document.write(`
+        <div style="padding:10px;text-align:center;">
+          <img src="${randomImgSrc}" width="400" />
+        </div>`)
 }
