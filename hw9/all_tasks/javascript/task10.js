@@ -4,6 +4,6 @@
 if (confirm('Почати тестування?')) {
   const prices = [250, 1200, 500, 3000, 750, 1500, 999, 2000, 80, 1100];
   const TAX_RATE = 0.2
-  const taxes = prices.map(el=>el*TAX_RATE)
+  const taxes = prices.map(price=>price*TAX_RATE)
   console.log(taxes)
 }

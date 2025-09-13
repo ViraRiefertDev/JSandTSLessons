@@ -14,6 +14,6 @@ if (confirm('Почати тестування?')) {
   "ZZ8888ZZ"
 ];
 
-  const carNumbersWithStartA = carNumbers.filter(el=>el[0]==='A')
+  const carNumbersWithStartA = carNumbers.filter(carNumber=>carNumber[0]==='A')
   console.log(carNumbersWithStartA)
 }

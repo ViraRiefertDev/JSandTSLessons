@@ -19,7 +19,7 @@ if (confirm('Почати тестування?')) {
   "Andrew"
 ];
 
-const namesFirstLetter = names.map(e=>e[0])
+const namesFirstLetter = names.map(name=>name[0])
 console.log(namesFirstLetter)
 
 }
