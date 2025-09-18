@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        border: 2px solid blue;
+      }
+      img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+    //----------------------------------------
+    // Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+    function randomPrice(){
+      return Math.floor(Math.random()*10000)+1
+    }
+
+    const pricesArray = []
+    for(let i=0; i<15; i++){
+      pricesArray.push(randomPrice())
+    }
+    console.log(pricesArray)
+
+    //----------------------------------------
+    //  1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн. 
+    const priceArrayMoreThan1000 = pricesArray.filter(price=>price>1000)
+    console.log(priceArrayMoreThan1000)
+
+    //----------------------------------------
+    // 2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн
+    //--1 Варіант---
+    // const numbersPriceMoreThan1000 = pricesArray
+    //   .map((price, index)=>price>1000?index+1:null)
+    //   .filter(el=>el !== null)
+    // console.log(numbersPriceMoreThan1000)
+    //--2 Варіант---
+    // const numbersPriceMoreThan1000 = pricesArray.reduce((acc,price,index)=> {
+    //   if(price>1000) acc.push(index+1)
+    //   return acc
+    // }, [])
+    // console.log(numbersPriceMoreThan1000)
+    //--3 Варіант--
+    // Не вивчали але знайшла цікавий метод, який заміняє .map.filter -> flatMap()
+    const numbersPriceMoreThan1000 = pricesArray.flatMap((price, i)=>price > 1000 ? [i+1]:[])
+    console.log(numbersPriceMoreThan1000)
+
+    //----------------------------------------
+    //3)Сформувати список з тих цін, які більші за попереднє значення
+    const pricesMoreThanPreviousValue = pricesArray.filter((price, index, baseArr)=> index>0 && price>baseArr[index-1])
+    console.log(pricesMoreThanPreviousValue)
+
+    //----------------------------------------
+    //4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+    const maxPrice = pricesArray.reduce((max, price)=> price>max ? price : max)
+    const pricesInPercentOfMax = pricesArray.map(price=>Math.round(price/maxPrice*1000)/10)
+    console.log(pricesInPercentOfMax)
+
+    //----------------------------------------
+    //5)Підрахувати кількість змін цін
+    const priceChangeCount = pricesArray.reduce((count,price,index, baseArr)=> (index>0 && price !== baseArr[index-1]) ? ++count : count, 0)
+    console.log(priceChangeCount)
+
+    //----------------------------------------
+    //6)Визначити, чи є ціна, що менше 1000
+    const isPriceLessThan1000 = pricesArray.some(price=>price<1000)
+    if(isPriceLessThan1000) {
+      console.log('Так є ціна < за 1000')
+    }else{
+      console.log('Ні, ціни меншої за 1000 не має')
+    }
+
+    //----------------------------------------
+    //7)Визначати, чи усі ціни більше за 1000
+    const isAllPricesMoreThan1000 = pricesArray.every(price=>price>1000)
+    if(isAllPricesMoreThan1000) {
+      console.log('Так всі ціни > за 1000')
+    }else{
+      console.log('Ні, не всі ціни > за 1000')
+    }
+
+    //----------------------------------------
+    // 8)Підрахувати кількість цін, що більше за 1000
+    //1 Варіант
+    // const priceNumberMoreThan1000 = pricesArray.reduce((count,price)=>price>1000 ? ++count : count,0);
+    //2 Варіант
+    const priceNumberMoreThan1000 = pricesArray.filter((price)=>price>1000).length
+    console.log(priceNumberMoreThan1000)
+
+    //----------------------------------------
+    //9)Підрахувати суму цін, що більше за 1000
+    const pricesSumThanMore1000 = pricesArray.reduce((sum,price)=>price>1000 ? sum+price : sum,0)
+    console.log(pricesSumThanMore1000)
+
+    //----------------------------------------
+    //10)Знайти першу ціну, що більше за 1000
+    const firstPriceMoreThan1000 = pricesArray.find((price)=>price>1000)
+    if(firstPriceMoreThan1000){
+      console.log(`перша ціна, що більше за 1000: ${firstPriceMoreThan1000}`)
+    }else{
+      console.log('Немає цін більших за 1000')
+    }
+
+    //11)Знайти індекс першої ціни, що більше за 1000
+    const firstIndexPriceMoreThan1000 = pricesArray.findIndex(price=>price>1000)
+    if(firstIndexPriceMoreThan1000 !==-1){
+      console.log(`Індекс першої ціни що більше за 1000: ${firstIndexPriceMoreThan1000}`)
+    }else{
+      console.log('Немає цін більших за 1000')
+    }
+
+    //----------------------------------------
+    //12)Знайти останню ціну, що більше за 1000
+    //перший варіант
+    // const lastPriceMoreThan1000 = pricesArray.findLast((price)=>price>1000)
+    //другий варіант
+    const lastPriceMoreThan1000 = [...pricesArray].reverse().find((price)=>price>1000)
+
+    if(lastPriceMoreThan1000){
+      console.log(`остання ціна, що більше за 1000: ${lastPriceMoreThan1000}`)
+    }else{
+      console.log('Немає цін більших за 1000')
+    }
+
+    //----------------------------------------
+    //13)Знайти індекс останньої ціни, що більше за 1000
+    const lastIndexPriceMoreThan1000 = pricesArray.findLastIndex(price=>price>1000)
+    if(lastIndexPriceMoreThan1000 !==-1){
+      console.log(`Індекс останньої ціни що більше за 1000: ${lastIndexPriceMoreThan1000}`)
+    }else{
+      console.log('Немає цін більших за 1000')
+    }
+  </script>
+  </body>
+</html>
