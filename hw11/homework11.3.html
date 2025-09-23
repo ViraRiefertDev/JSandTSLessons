@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        border: 2px solid blue;
+      }
+      img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+// Задача 3. Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. 
+// Користувач стріляє вказуючи координати. 
+// Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+function generateCoordinate(sizeX,sizeY){
+  const MIN_COORDINATE = 0
+  const maxCoordinateX = sizeX-1;
+  const maxCoordinateY = sizeY-1;
+  const coordinateX = Math.floor(MIN_COORDINATE + Math.random()*(maxCoordinateX-MIN_COORDINATE + 1))
+  const coordinateY = Math.floor(MIN_COORDINATE + Math.random()*(maxCoordinateY-MIN_COORDINATE + 1))
+  return [coordinateY,coordinateX]
+}
+
+function generateGameBoard(sizeX,sizeY,countOfShips){
+  const gameBoard = Array.from({length:sizeY}, ()=>Array.from({length:sizeX},()=>0))
+  let countOfCreatedShips = 0;
+  while(countOfCreatedShips<countOfShips){
+    shipCoordinate = generateCoordinate(sizeX,sizeY)
+    if(gameBoard[shipCoordinate[0]][shipCoordinate[1]]===1) continue
+    gameBoard[shipCoordinate[0]][shipCoordinate[1]]=1
+    countOfCreatedShips++
+  }
+  console.log(gameBoard)
+  return gameBoard
+}
+
+const COUNT_OF_SHIPS = 5
+const INIT_NUMBER_OF_SHOTS=10
+let numberOfShots = INIT_NUMBER_OF_SHOTS;
+let sunkShipsCount = 0
+let gameBoard = generateGameBoard(6,6,COUNT_OF_SHIPS)
+while(numberOfShots>0 && sunkShipsCount !== COUNT_OF_SHIPS){
+  coordinateX = parseInt(prompt('Введіть X-коордінату'))
+  coordinateY = parseInt(prompt('Введіть Y-коордінату'))
+  numberOfShots--
+  if(gameBoard[coordinateY][coordinateX]===1){
+    gameBoard[coordinateY][coordinateX]=0
+    sunkShipsCount++
+    alert(`Ви попали! залишилось ${COUNT_OF_SHIPS-sunkShipsCount} кораблів та ${numberOfShots} вистрілів`)
+
+  }else{
+    alert(`Ви НЕ попали! залишилось ${COUNT_OF_SHIPS-sunkShipsCount} кораблів та ${numberOfShots} вистрілів`)
+  }
+}
+if(numberOfShots===0 && sunkShipsCount !==COUNT_OF_SHIPS){
+  alert(`Ви програли! ${COUNT_OF_SHIPS-sunkShipsCount} із ${COUNT_OF_SHIPS} кораблів потоплено`)
+}else{
+  alert(`Ви виграли! Потопили ${COUNT_OF_SHIPS} кораблів за ${INIT_NUMBER_OF_SHOTS-numberOfShots}потоплено`)
+}
+  </script>
+  </body>
+</html>

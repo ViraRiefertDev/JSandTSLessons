@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        border: 2px solid blue;
+      }
+      img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+    //Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+    const shopsWeeklyProfits = [
+      [734, 822, 590, 943, 211, 655, 880], // магазин 1
+      [412, 687, 930, 501, 755, 612, 889], // магазин 2
+      [900, 475, 588, 640, 721, 835, 410], // магазин 3
+      [310, 720, 550, 920, 610, 780, 695], // магазин 4
+      [500, 420, 810, 950, 705, 330, 865]  // магазин 5
+    ]
+
+    //=========================================================================
+    //1) загальний прибуток кожного масиву за тиждень;
+    // const totalProfitsProShop = shopsWeeklyProfits
+    //   .map(weekProfit => weekProfit
+    //   .reduce((prevSum, profit)=>prevSum+profit))
+
+    // totalProfitsProShop
+    //   .forEach((profit,index)=>console.log(`Прибуток за тиждень для ${index+1} магазину: ${profit}`))
+    
+    //=========================================================================
+    //2) загальний прибуток усіх магазинів по дням 
+    //  (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+    // const initSum = Array.from({length:7},()=>0)
+    // const daysProfits = shopsWeeklyProfits
+    //   .reduce((prevSum,weekProfit)=>weekProfit
+    //   .map((profit,index)=>(prevSum[index]+profit)),initSum)
+    // console.log(daysProfits)
+
+    //=========================================================================
+    //3) загальний прибуток за робочі дні
+    // const COUNT_OF_WORKING_DAYS = 5
+    // const totalProfitForWorkingDays = shopsWeeklyProfits
+    //   .reduce((prevWeekSum,weekProfit)=>prevWeekSum+ weekProfit
+    //   .reduce((prevSum,profit,index)=>index<COUNT_OF_WORKING_DAYS?prevSum+profit:prevSum,0),0)
+    // console.log(totalProfitForWorkingDays)
+
+    //=========================================================================
+    //4) загальний прибуток за вихідні дні
+      // const totalProfitForWeekends = shopsWeeklyProfits
+      //   .reduce((prevWeekSum,weekProfit)=>prevWeekSum+weekProfit
+      //   .slice(5)
+      //   .reduce((prevSum,profit)=>prevSum+profit,0),0)
+      // console.log(totalProfitForWeekends)
+
+    //=========================================================================
+    //5) максимальний прибуток за середу
+    const WEDNESDAY_INDEX = 2
+    const profitsForWednesday = shopsWeeklyProfits.map((weekProfits,index)=>weekProfits[WEDNESDAY_INDEX])
+    const maxProfitForWednesday = Math.max(...profitsForWednesday)
+    console.log(maxProfitForWednesday)
+
+    //=========================================================================
+    //6) сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+    //-- I Варіант--
+    // const profitsMoreThen200 = shopsWeeklyProfits.flat().filter((profit)=>profit>200)
+    // console.log(profitsMoreThen200)
+    //-- II Варіант--
+    // const profitsMoreThen200 = shopsWeeklyProfits.flatMap(week=>week.filter(p=>p>200));
+    // console.log(profitsMoreThen200)
+
+    //=========================================================================
+    //7) відсортувати кожен тиждень за зростанням
+    // const sortWeeklyProfits = shopsWeeklyProfits.map((weekArr)=>[...weekArr].sort((a,b)=>a-b))
+    // console.log(sortWeeklyProfits)
+
+    //=========================================================================
+    // 8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), 
+    // тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+  
+    // const sortByMax = [...shopsWeeklyProfits].sort((a,b)=>Math.max(...b)-Math.max(...a))
+    // console.log(sortByMax)
+
+    //=========================================================================
+    // 9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку 
+    // (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, 
+    // на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+    // const sortBySum = [...shopsWeeklyProfits]
+    // .sort((a,b)=>b.reduce((prevSum,profit)=>prevSum+profit,0)-a.reduce((prevSum,profit)=>prevSum+profit,0))
+    //   console.log(sortBySum)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        border: 2px solid blue;
+      }
+      img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+
+// Задача 1. Знайти суми елементів у вказаній області 
+// (зафарбована область охоплює відповідну половину рядків і стовпців)
+
+const numberArray = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16]
+]
+//=========================================================================
+// 1) номери рядків від 0 до половини, стовпці від 0 до половини
+// const half = numberArray.length/2
+// let sum=0;
+// for (let i=0; i<half; i++) {
+//   for (let j=0; j<half; j++){
+//     sum+=numberArray[i][j]
+//   } 
+// }
+// console.log(sum)
+
+//=========================================================================
+// 2) номери рядків від 0 до половини, стовпці від половини до кінця
+// const half = numberArray.length/2
+// const end = numberArray.length
+// let sum=0;
+// for (let i=0; i<half; i++) {
+//   for (let j=half; j<end; j++){
+//     sum+=numberArray[i][j]
+//   } 
+// }
+// console.log(sum)
+
+//=========================================================================
+// 3) номери рядків (від половини до кінця, стовпці від 0 до половини
+// const half = numberArray.length/2
+// const end = numberArray.length
+// let sum=0;
+// for (let i=half; i<end; i++) {
+//   for (let j=0; j<half; j++){
+//     sum+=numberArray[i][j]
+//   } 
+// }
+// console.log(sum)
+
+//=========================================================================
+// 4) номери рядків від половини до кінця , стовпці від половини до кінця
+// const half = numberArray.length/2
+// const end = numberArray.length
+// let sum=0;
+// for (let i=half; i<end; i++) {
+//   for (let j=half; j<end; j++){
+//     sum+=numberArray[i][j]
+//   } 
+// }
+// console.log(sum)
+
+//=========================================================================
+//5) Суму парних рядків
+// const end = numberArray.length
+// let sum=0;
+// for (let i=0; i<end; i+=2) {
+//   for (let j=0; j<end; j++){
+//     sum+=numberArray[i][j]
+//   } 
+// }
+// console.log(sum)
+
+//=========================================================================
+//6) Суму непарних рядків
+// const end = numberArray.length
+// let sum=0;
+// for (let i=1; i<end; i+=2) {
+//   for (let j=0; j<end; j++){
+//     sum+=numberArray[i][j]
+//   } 
+// }
+// console.log(sum)
+
+//=========================================================================
+//7) У парних рядках – непарні стовпці, у непарних – парні
+// let sum=0;
+// for(let i=0; i<numberArray.length; i++){
+//   let j;
+  
+//   for(let j=(i%2===0?1:0);j<numberArray[i].length; j+=2){
+//     sum+=numberArray[i][j]
+//   }
+// }
+// console.log(sum)
+  </script>
+  </body>
+</html>
