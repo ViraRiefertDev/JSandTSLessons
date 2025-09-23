@@ -33,7 +33,7 @@ function generateGameBoard(sizeX,sizeY,countOfShips){
   const gameBoard = Array.from({length:sizeY}, ()=>Array.from({length:sizeX},()=>0))
   let countOfCreatedShips = 0;
   while(countOfCreatedShips<countOfShips){
-    shipCoordinate = generateCoordinate(sizeX,sizeY)
+    const shipCoordinate = generateCoordinate(sizeX,sizeY)
     if(gameBoard[shipCoordinate[0]][shipCoordinate[1]]===1) continue
     gameBoard[shipCoordinate[0]][shipCoordinate[1]]=1
     countOfCreatedShips++
@@ -48,8 +48,8 @@ let numberOfShots = INIT_NUMBER_OF_SHOTS;
 let sunkShipsCount = 0
 let gameBoard = generateGameBoard(6,6,COUNT_OF_SHIPS)
 while(numberOfShots>0 && sunkShipsCount !== COUNT_OF_SHIPS){
-  coordinateX = parseInt(prompt('Введіть X-коордінату'))
-  coordinateY = parseInt(prompt('Введіть Y-коордінату'))
+  const coordinateX = parseInt(prompt('Введіть X-коордінату'))
+  const coordinateY = parseInt(prompt('Введіть Y-коордінату'))
   numberOfShots--
   if(gameBoard[coordinateY][coordinateX]===1){
     gameBoard[coordinateY][coordinateX]=0
@@ -63,7 +63,7 @@ while(numberOfShots>0 && sunkShipsCount !== COUNT_OF_SHIPS){
 if(numberOfShots===0 && sunkShipsCount !==COUNT_OF_SHIPS){
   alert(`Ви програли! ${COUNT_OF_SHIPS-sunkShipsCount} із ${COUNT_OF_SHIPS} кораблів потоплено`)
 }else{
-  alert(`Ви виграли! Потопили ${COUNT_OF_SHIPS} кораблів за ${INIT_NUMBER_OF_SHOTS-numberOfShots}потоплено`)
+  alert(`Ви виграли! Потопили ${COUNT_OF_SHIPS} кораблів за ${INIT_NUMBER_OF_SHOTS-numberOfShots} вистрілів`)
 }
   </script>
   </body>
