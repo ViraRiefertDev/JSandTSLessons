@@ -20,12 +20,15 @@
 // Задача 3. Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. 
 // Користувач стріляє вказуючи координати. 
 // Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+
+function randInt(min, max){ return min + Math.floor(Math.random()*(max-min+1)); }
+
 function generateCoordinate(sizeX,sizeY){
   const MIN_COORDINATE = 0
   const maxCoordinateX = sizeX-1;
   const maxCoordinateY = sizeY-1;
-  const coordinateX = Math.floor(MIN_COORDINATE + Math.random()*(maxCoordinateX-MIN_COORDINATE + 1))
-  const coordinateY = Math.floor(MIN_COORDINATE + Math.random()*(maxCoordinateY-MIN_COORDINATE + 1))
+  const coordinateX = randInt(MIN_COORDINATE,maxCoordinateX)
+  const coordinateY = randInt(MIN_COORDINATE,maxCoordinateY)
   return [coordinateY,coordinateX]
 }
 
