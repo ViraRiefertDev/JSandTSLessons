@@ -88,6 +88,15 @@
     // const sortByMax = [...shopsWeeklyProfits].sort((a,b)=>Math.max(...b)-Math.max(...a))
     // console.log(sortByMax)
 
+    //--II Варіант (кращий)
+    //у кожен рядочок додаємо максимальний елемент
+    //і коли будемо сортувати масиви будемо дивитися тільки на останній елемент
+    // shopsWeeklyProfits.forEach((arr)=>arr.push(Math.max(...arr)))
+    // console.log(JSON.parse(JSON.stringify(shopsWeeklyProfits)));
+    // shopsWeeklyProfits.sort((a,b)=>b.at(-1)-a.at(-1))
+    // shopsWeeklyProfits.forEach(arr=>arr.pop())
+    // console.log(shopsWeeklyProfits)
+
     //=========================================================================
     // 9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку 
     // (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, 
@@ -95,6 +104,12 @@
     // const sortBySum = [...shopsWeeklyProfits]
     // .sort((a,b)=>b.reduce((prevSum,profit)=>prevSum+profit,0)-a.reduce((prevSum,profit)=>prevSum+profit,0))
     //   console.log(sortBySum)
+
+    //--II Варіант
+    //  shopsWeeklyProfits.forEach((arr)=>arr.push(arr.reduce((sum,el)=>el+sum)))
+    // shopsWeeklyProfits.sort((a,b)=>b[b.length-1]-a[a.length-1])
+    // shopsWeeklyProfits.forEach((arr)=>arr.pop())
+    // console.log(shopsWeeklyProfits)
     </script>
   </body>
 </html>
