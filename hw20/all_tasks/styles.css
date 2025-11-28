@@ -1,0 +1,45 @@
+.task-container{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  align-items: center;
+  justify-content: center;
+}
+.filters-container,
+.carlist-container{
+  font-weight: 800;
+  font-size: 25px;
+}
+
+h3{
+  margin-bottom: 0;
+}
+
+select{
+  font-size: 20px;
+  color:green;
+}
+
+.filters-container{
+  color:green;
+}
+
+.filters-body,
+.carlist-body{
+  border: 3px solid green;
+  display: inline-flex;
+  gap: 30px;
+  min-height: 150px;
+  padding:10px;
+}
+
+.carlist-container{
+  color:brown
+}
+.carlist-body{
+  border-color: brown;
+  flex-direction: column;
+  padding-right: 275px;
+  gap:10px;
+  min-height: 200px;
+}
